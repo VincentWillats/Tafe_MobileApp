@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TicTacToe.MainPage">
+
+    <Grid Margin="0,40,0,0" BackgroundColor="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33.3*"/>
+            <RowDefinition Height="33.3*"/>
+            <RowDefinition Height="33.3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33.3*"/>
+            <ColumnDefinition Width="33.3*"/>
+            <ColumnDefinition Width="33.3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button ClassId="0" x:Name="TopLeft"        Text="" Grid.Row="0" Grid.Column="0" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Button_Clicked" BackgroundColor="WhiteSmoke" />
+        <Button ClassId="1" x:Name="TopMiddle"      Text="" Grid.Row="0" Grid.Column="1" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Button_Clicked" BackgroundColor="WhiteSmoke"/>
+        <Button ClassId="2" x:Name="TopRight"       Text="" Grid.Row="0" Grid.Column="2" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Button_Clicked" BackgroundColor="WhiteSmoke"/>
+        <Button ClassId="3" x:Name="MiddleLeft"     Text="" Grid.Row="1" Grid.Column="0" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Button_Clicked" BackgroundColor="WhiteSmoke"/>
+        <Button ClassId="4" x:Name="MiddleMiddle"   Text="" Grid.Row="1" Grid.Column="1" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Button_Clicked" BackgroundColor="WhiteSmoke"/>
+        <Button ClassId="5" x:Name="MiddleRight"    Text="" Grid.Row="1" Grid.Column="2" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Button_Clicked" BackgroundColor="WhiteSmoke"/>
+        <Button ClassId="6" x:Name="BottomLeft"     Text="" Grid.Row="2" Grid.Column="0" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Button_Clicked" BackgroundColor="WhiteSmoke"/>
+        <Button ClassId="7" x:Name="BottomMiddle"   Text="" Grid.Row="2" Grid.Column="1" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Button_Clicked" BackgroundColor="WhiteSmoke"/>
+        <Button ClassId="8" x:Name="BottomRight"    Text="" Grid.Row="2" Grid.Column="2" FontSize="Large" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Button_Clicked" BackgroundColor="WhiteSmoke"/>
+
+    </Grid>  
+
+</ContentPage>
