@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="tip_calculator.MainPage">
+
+    <StackLayout Orientation="Vertical" Margin="0,50,0,0">
+        <StackLayout Orientation="Vertical" WidthRequest="240" Padding="10,0,0,0">
+            <StackLayout Orientation="Horizontal" WidthRequest="240">                
+                <Label Text="Bill" HorizontalOptions="Start" WidthRequest="120"/>
+                <Label Text="$0" x:Name="billAmountLabel" HorizontalOptions="End" HorizontalTextAlignment="End" WidthRequest="120"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" WidthRequest="240">                
+                <Label Text="Tip" HorizontalOptions="Start" WidthRequest="120"/>
+                <Label Text="$0.00" x:Name="TipAmountLabel" HorizontalOptions="End" HorizontalTextAlignment="End" WidthRequest="120"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" WidthRequest="240">
+                <Label Text="Number of Diners:" HorizontalOptions="Start" WidthRequest="120" VerticalOptions="Center"/>
+                <Stepper x:Name="_Stepper" Maximum="20" Increment="1"  Minimum="1" HorizontalOptions="Center" ValueChanged="_Stepper_ValueChanged"/>
+                <Label Text="{Binding Source={x:Reference _Stepper}, Path=Value}" x:Name="noOfDiners" HorizontalOptions="End" HorizontalTextAlignment="End" WidthRequest="56" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" WidthRequest="240">
+                <Label Text="Cost per Diner:" HorizontalOptions="Start" VerticalTextAlignment="Center" WidthRequest="120"/>
+                <Label Text="$0.00" x:Name="costPerDiners" HorizontalOptions="End" HorizontalTextAlignment="End" WidthRequest="120"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" WidthRequest="240">                
+                <Label Text="Total" HorizontalOptions="Start" WidthRequest="120"/>
+                <Label Text="$0.00" x:Name="TotalAmountLabel" HorizontalOptions="End" HorizontalTextAlignment="End" WidthRequest="120"/>
+            </StackLayout>    
+        </StackLayout>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="7" Grid.Row="0" Grid.Column="0" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="8" Grid.Row="0" Grid.Column="1" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="9" Grid.Row="0" Grid.Column="2" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="4" Grid.Row="1" Grid.Column="0" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="5" Grid.Row="1" Grid.Column="1" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="6" Grid.Row="1" Grid.Column="2" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="1" Grid.Row="2" Grid.Column="0" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="2" Grid.Row="2" Grid.Column="1" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="3" Grid.Row="2" Grid.Column="2" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="0" Grid.Row="3" Grid.Column="0" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="." Grid.Row="3" Grid.Column="1" Clicked="Calculator_Button_Clicked"/>
+            <Button Text="C" Grid.Row="3" Grid.Column="2" Clicked="Calculator_Button_Clicked"/>
+        </Grid> 
+        <StackLayout Orientation="Horizontal">
+            <Slider HorizontalOptions="Start" WidthRequest="200" Maximum="100" Minimum="0" Value="10" ValueChanged="Slider_ValueChanged" x:Name="TipSlider"/>
+            <Label HorizontalOptions="End" Text="10%" x:Name="percentageLabel" WidthRequest="40" HorizontalTextAlignment="End" VerticalTextAlignment="Center" VerticalOptions="Center"/>     
+        </StackLayout>      
+    </StackLayout>
+
+
+</ContentPage>
