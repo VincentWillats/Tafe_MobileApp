@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Layour_05.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="16.6*"/>
+            <RowDefinition Height="16.6*"/>
+            <RowDefinition Height="16.6*"/>
+            <RowDefinition Height="16.6*"/>
+            <RowDefinition Height="16.6*"/>
+            <RowDefinition Height="16.6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+
+        <Entry Text="£2 2c 1s 6d 1f" HorizontalTextAlignment="Center"
+               IsReadOnly="True" FontAttributes="Bold" FontSize="Large"
+               Grid.Row="0" Grid.Column="0"/>
+        
+        
+        <Frame Padding="10" BorderColor="Black" Grid.Row="1" Grid.Column="0">
+            <StackLayout Orientation="Horizontal">           
+                <Button Text="    -    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="StartAndExpand"
+                    BackgroundColor="White"/>
+                <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                    <Label Text="2" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="pounds" FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <Button Text="    +    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand"
+                    BackgroundColor="White"/>                
+        </StackLayout>
+        </Frame>
+        
+        <Frame Padding="10" BorderColor="Black" Grid.Row="2" Grid.Column="0">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="    -    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="StartAndExpand"
+                    BackgroundColor="White"/>
+                <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                    <Label Text="2" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="Crowns" FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <Button Text="    +    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand"
+                    BackgroundColor="White"/>
+            </StackLayout>
+        </Frame>
+        
+        <Frame Padding="10" BorderColor="Black" Grid.Row="3" Grid.Column="0">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="    -    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="StartAndExpand"
+                    BackgroundColor="White"/>
+                <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                    <Label Text="2" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="shilling" FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <Button Text="    +    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand"
+                    BackgroundColor="White"/>
+            </StackLayout>
+        </Frame>
+        
+        <Frame Padding="10" BorderColor="Black" Grid.Row="4" Grid.Column="0">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="    -    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="StartAndExpand"
+                    BackgroundColor="White"/>
+                <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                    <Label Text="2" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="pence" FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <Button Text="    +    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand"
+                    BackgroundColor="White"/>
+            </StackLayout>
+        </Frame>
+        
+        <Frame Padding="10" BorderColor="Black" Grid.Row="5" Grid.Column="0">
+            <StackLayout Orientation="Horizontal">
+                <Button Text="    -    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="StartAndExpand"
+                    BackgroundColor="White"/>
+                <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                    <Label Text="1" FontSize="Medium" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="farthing" FontSize="Small" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <Button Text="    +    " FontSize="Medium" FontAttributes="Bold" HorizontalOptions="EndAndExpand"
+                    BackgroundColor="White"/>
+            </StackLayout>
+        </Frame>
+
+
+    </Grid>
+
+</ContentPage>

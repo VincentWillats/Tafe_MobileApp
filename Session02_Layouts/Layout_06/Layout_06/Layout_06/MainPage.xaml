@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Layout_06.MainPage">
+
+    <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Vertical" Margin="0, 40, 0, 0">
+            <Button WidthRequest="86" HeightRequest="36" Margin="3" Text="Main"/>
+            <Button WidthRequest="86" HeightRequest="36" Margin="3" Text="Categories"/>
+            <Button WidthRequest="86" HeightRequest="36" Margin="3" Text="Index"/>
+            <Button WidthRequest="86" HeightRequest="36" Margin="3" Text="Search"/>
+            <Button WidthRequest="86" HeightRequest="36" Margin="3" Text="About"/>      
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" >
+            <Label Text="Naming Superman" FontSize="Large"  HorizontalTextAlignment="Center" />
+            <Label FontSize="Small"  HorizontalTextAlignment="Start"
+                   Text="In the original 1978 Superman movie, Lois Lane names Superman after he has flown away from his interview with her using the following line of dialogue...&#10;&#10;
+&quot;What a super man. Hm. 'Superman!'&quot;&#10;&#10;
+2013's Man of Steel has Lois name Superman a little better. On paper, the dialogue is still pretty unsubtle
+and ham-handed but the line is lifted by Amy Adams' delivery. She says the line with a hesitancy and a
+little smile which shows that Lois knows this is kind of silly.&#10;&#10;
+&quot;How about... Sup-&quot;&#10;&#10;
+(At this point, she is interrupted.)&#10;&#10;
+In &quot;Superman: The Animated Series&quot;, the cartoon Lois Lane also names Superman, except in this case it
+is in a meeting with her editor after Superman's first public appearance.&#10;&#10;
+&quot;He's strong. He flies. He the Nietzschean fantasy ideal all wrapped up in a red cape. The superman.&quot;
+Delivery of the lines aside, how is it that a cartoon manages to produce a more intelligent, less forced,
+better written, more believable and far superior origin for Superman's name than either of two Hollywood
+blockbusters?&#10;&#10;
+&quot;What a super man,&quot; indeed!"/>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

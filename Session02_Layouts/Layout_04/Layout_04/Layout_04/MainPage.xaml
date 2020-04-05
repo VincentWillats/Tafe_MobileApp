@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Layout_04.MainPage">
+
+    <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Vertical">
+            <Image Source="Assets\profile_pic.png"/>
+            <Label Text="Joe Bloggs" HorizontalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout Orientation="Vertical">
+        <Label Text="&#10; Joe Bloggs is a valued member of our diverse and creative team, blah, blah, blah, Does anyone
+even read this copy? I bet I could write anything I like in here and no one will notice. I mean, it's
+not like most people are interested in the biography of a low level nobody like Joe here. Or,
+frankly, even the CEO. I don't even know his name. Or her"/>
+            <Label Text="Then again, I guess Joe will probably drop by and read it at some point. Vanity, you know. Hi,
+Joe! No offence, dude. it's just that I'm retiring in three months anyway and, let's face it, you
+know I'm right that you're the only person who is going to read this."/>
+            <Label Text="My farewell party is on the 12th of April. Bring a bottle. Or two"/>
+            <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                <Button Text="Email" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                <Button Text="LinkedIn" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+                <Button Text="Facebook" HorizontalOptions="EndAndExpand" VerticalOptions="Center"/>
+               
+            </StackLayout>
+        </StackLayout>
+
+
+    </StackLayout>
+
+</ContentPage>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Layout_1.MainPage">
+
+    <StackLayout Orientation="Vertical">
+        <!-- Place new controls here -->
+        
+        <Label Text="Tengu" FontSize="Medium" />
+        <Label Text="by Joel Fagin"/>
+        
+        <Label Text="The clouds in the sky had blurred away but the samurai had his head bowed and did not notice. The air had changed, too,
+the breeze shifting around to be borne from a new sea, but the samurai's path was winding so the direction was lost on him.
+The sun warmed slightly but his hat and cloak kept it from his skin and its shifting spectrum went unnoticed beneath the
+shadows of the trees."/>
+        <Label Text="But when the sound of the path changed beneath the stilt-like soles of his geta sandals, then he raised his eyes and noticed
+that the world had changed around him. He frowned as he saw the trees, oddly shaped to his eyes, smelt the new air, tainted
+with alchemical fumes, and looked upon the gravel beneath his feet, now less of a worn route through a forest than a laid
+path, cared for and maintained."/>
+        <Label Text="He looked back along the way he had come, eyes narrow. Then, he turned forwards again and continued walking, resting his
+hand on the hilt of his lone sword as he did so."/>
+
+
+    </StackLayout>
+
+</ContentPage>
