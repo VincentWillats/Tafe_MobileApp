@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Conversion_App.MainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <Frame Grid.Row="1" Grid.Column="1" BorderColor="AntiqueWhite" BackgroundColor="WhiteSmoke">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <Entry  Grid.Column="0" Grid.Row="0" x:Name="entryBox01"    ClassId="entryBox01"    Keyboard="Numeric" TextChanged="TextChanged_Event" FontSize="Large" HorizontalTextAlignment="End"/>
+                <Picker Grid.Column="0" Grid.Row="1" x:Name="pickerBox01"   ClassId="pickerBox01"   SelectedIndexChanged="PickerChanged_Event" BackgroundColor="LightGray">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Milimeters (mm)</x:String>
+                            <x:String>Centimeters (cm)</x:String>
+                            <x:String>Meters (m)</x:String>
+                            <x:String>Kilometers (km)</x:String>
+                            <x:String>Feet (ft)</x:String>
+                            <x:String>Inches (in)</x:String>
+                            <x:String>Decimeter</x:String>
+                            <x:String>Mile (m)</x:String>
+                            <x:String>Yard</x:String>
+                            <x:String>Furlong</x:String>
+                            <x:String>Hand (horses)</x:String>
+                            <x:String>Fathom</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                    <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                </Picker>
+                <Image  Grid.Column="0" Grid.Row="2" HorizontalOptions="StartAndExpand">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="Android" Value="downarrow.png"/>
+                            <On Platform="UWP" Value="Assets/downarrow.png"/>
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
+                <Image  Grid.Column="0" Grid.Row="2" HorizontalOptions="EndAndExpand">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="Android" Value="uparrow.png"/>
+                            <On Platform="UWP" Value="Assets/uparrow.png"/>
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
+                <Entry  Grid.Column="0" Grid.Row="3" x:Name="entryBox02"    ClassId="entryBox02"    Keyboard="Numeric"  TextChanged="TextChanged_Event" FontSize="Large" HorizontalTextAlignment="End" />
+                <Picker Grid.Column="0" Grid.Row="4" x:Name="pickerBox02"   ClassId="pickerBox02"   SelectedIndexChanged="PickerChanged_Event" BackgroundColor="LightGray">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Milimeters (mm)</x:String>
+                            <x:String>Centimeters (cm)</x:String>
+                            <x:String>Meters (m)</x:String>
+                            <x:String>Kilometers (km)</x:String>
+                            <x:String>Feet (ft)</x:String>
+                            <x:String>Inches (in)</x:String>
+                            <x:String>Decimeter</x:String>
+                            <x:String>Mile (m)</x:String>
+                            <x:String>Yard</x:String>
+                            <x:String>Furlong</x:String>
+                            <x:String>Hand (horses)</x:String>
+                            <x:String>Fathom</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                    <Picker.SelectedIndex>1</Picker.SelectedIndex>
+                </Picker>
+            </Grid>
+        </Frame>
+
+    </Grid>
+</ContentPage>
