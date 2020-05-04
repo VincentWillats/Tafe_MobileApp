@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -13,25 +14,79 @@ using Xamarin.Forms;
  * 
  * Has an UpdateUI function which is called in all event handlers and in mainpage constructor
  * UpdateUI updates all labels/text and visability of buttons
+ * 
+ * 04/05/2020 - Added click sound
  **/
 
 namespace VictorianMoneyTracker
 {
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         currency_Model Currency = new currency_Model();
+
+        bool isSoundOn = true;
+
+        public Xamarin.Forms.Color BackgroundColour { get; set; }
+        public Xamarin.Forms.Color TextColour { get; set; }
+        public Xamarin.Forms.Color BorderColour { get; set; }
+
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public MainPage()
         {
             InitializeComponent();
+            
+            BindingContext = this;
+        }
+
+        override protected void OnAppearing()
+        {
+            LoadProperties();
             UpdateUI();
+        }
+
+        private void LoadProperties()
+        {
+            if (Application.Current.Properties.ContainsKey("darkMode"))
+            {
+                SetDarkMode((bool)Application.Current.Properties["darkMode"]);
+            }
+            if (Application.Current.Properties.ContainsKey("soundOn"))
+            {
+                isSoundOn = (bool)Application.Current.Properties["soundOn"];
+            }
+
+
+            if (Application.Current.Properties.ContainsKey("pounds"))
+            {
+                Currency.Pounds = int.Parse(Application.Current.Properties["pounds"].ToString());
+            }
+            if (Application.Current.Properties.ContainsKey("crowns"))
+            {
+                Currency.Crowns = int.Parse(Application.Current.Properties["crowns"].ToString());
+            }
+            if (Application.Current.Properties.ContainsKey("shillings"))
+            {
+                Currency.Shillings = int.Parse(Application.Current.Properties["shillings"].ToString());
+            }
+            if (Application.Current.Properties.ContainsKey("pence"))
+            {
+                Currency.Pence = int.Parse(Application.Current.Properties["pence"].ToString());
+            }
+            if (Application.Current.Properties.ContainsKey("farthings"))
+            {
+                Currency.Farthings = int.Parse(Application.Current.Properties["farthings"].ToString());
+            }
         }
 
         private void Currency_Convert_Pressed(object sender, EventArgs e)
         {
             ImageButton pressedButton = (ImageButton)sender;
             string pressedButtonName = pressedButton.ClassId;
+            if (isSoundOn) SoundEffects.PlayClickSound();
 
             switch (pressedButtonName)
             {
@@ -76,7 +131,8 @@ namespace VictorianMoneyTracker
         private void Currency_Adjust_Pressed(object sender, EventArgs e)
         {
             Button pressedButton = (Button)sender;
-            string pressedButtonName = pressedButton.ClassId;           
+            string pressedButtonName = pressedButton.ClassId;
+            if (isSoundOn) SoundEffects.PlayClickSound();
 
             switch (pressedButtonName)
             {
@@ -122,9 +178,21 @@ namespace VictorianMoneyTracker
             }
             UpdateUI();
         }
+        
+        private void SetDarkMode(bool darkMode)
+        {
+            BackgroundColour = darkMode ? Color.FromHex("#585858") : Color.White; 
+            TextColour = darkMode ? Color.White : Color.Black; 
+            BorderColour = darkMode ? Color.Gray : Color.Black;
+            System.Diagnostics.Debug.WriteLine(darkMode.ToString());        
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BackgroundColour"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TextColour"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BorderColour"));            
+        }
 
         private void UpdateUI()
-        {
+        {        
             totalPoundText.Text = "£" + Currency.Pounds.ToString();
             totalCrownText.Text = Currency.Crowns.ToString() + "c";
             totalShillingText.Text = Currency.Shillings.ToString() + "s";
@@ -156,7 +224,13 @@ namespace VictorianMoneyTracker
             _ = Currency.Farthings < 4 ? convertUpFarthing.IsVisible = false : convertUpFarthing.IsVisible = true;   // Sets button visability        
         }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            if(isSoundOn) SoundEffects.PlayClickSound();
+            Navigation.PushModalAsync(new SettingsPage());     
 
+            //Application.Current.Properties["darkMode"] = !((bool)Application.Current.Properties["darkMode"]);
+        }
     }
 }
 

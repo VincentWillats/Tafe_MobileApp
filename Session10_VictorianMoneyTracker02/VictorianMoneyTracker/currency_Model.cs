@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 /**
  * 
@@ -21,9 +22,12 @@ namespace VictorianMoneyTracker
         public int Pounds
         {
             get { return _pounds; }
-            set { _pounds = value;
+            set 
+            {
+                _pounds = value;
                 if (!(_pounds >= 0)) 
                 { _pounds = 0; }
+                Application.Current.Properties["pounds"] = _pounds;
             }
         }
 
@@ -31,9 +35,12 @@ namespace VictorianMoneyTracker
         public int Crowns
         {
             get { return _crowns; }
-            set { _crowns = value;
+            set 
+            { 
+                _crowns = value;
                 if (!(_crowns >= 0))
                 { _crowns = 0; }
+                Application.Current.Properties["crowns"] = _crowns;
             }
         }
 
@@ -41,9 +48,12 @@ namespace VictorianMoneyTracker
         public int Shillings
         {
             get { return _shillings; }
-            set { _shillings = value;
+            set 
+            { 
+                _shillings = value;
                 if (!(_shillings >= 0))
                 { _shillings = 0; }
+                Application.Current.Properties["shillings"] = _shillings;
             }
         }
 
@@ -51,9 +61,13 @@ namespace VictorianMoneyTracker
         public int Pence
         {
             get { return _pence; }
-            set { _pence = value;
+            set 
+            { 
+                _pence = value;
                 if (!(_pence >= 0))
                 { _pence = 0; }
+                Application.Current.Properties["pence"] = _pence;
+
             }
         }
 
@@ -61,9 +75,12 @@ namespace VictorianMoneyTracker
         public int Farthings
         {
             get { return _farthings; }
-            set { _farthings = value;
+            set 
+            { 
+                _farthings = value;
                 if (!(_farthings >= 0))
                 { _farthings = 0; }
+                Application.Current.Properties["farthings"] = _farthings;
             }
         }
 

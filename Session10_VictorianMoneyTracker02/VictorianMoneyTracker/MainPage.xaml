@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <!-- Victorian Money Tracker View -->
-    
-    
+
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -10,7 +10,7 @@
              mc:Ignorable="d"
              x:Class="VictorianMoneyTracker.MainPage">
 
-    <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0" Margin="2,40,2,2">
+    <Grid BackgroundColor="{Binding BackgroundColour}" RowSpacing="0" ColumnSpacing="0" Margin="2,40,2,2">
         <Grid.RowDefinitions>
             <RowDefinition Height="54"/>
             <RowDefinition Height="1"/>
@@ -24,6 +24,7 @@
             <RowDefinition Height="1"/>
             <RowDefinition Height="54"/>
             <RowDefinition Height="1"/>
+            <RowDefinition Height="54"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -34,29 +35,29 @@
 
 
         <!-- Grid boarders -->
-        <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="Black" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
-        <BoxView Grid.Row="3" Grid.ColumnSpan="3" BackgroundColor="Black" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
-        <BoxView Grid.Row="5" Grid.ColumnSpan="3" BackgroundColor="Black" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
-        <BoxView Grid.Row="7" Grid.ColumnSpan="3" BackgroundColor="Black" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
-        <BoxView Grid.Row="9" Grid.ColumnSpan="3" BackgroundColor="Black" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
-        <BoxView Grid.Row="11" Grid.ColumnSpan="3" BackgroundColor="Black" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+        <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="{Binding BorderColour}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+        <BoxView Grid.Row="3" Grid.ColumnSpan="3" BackgroundColor="{Binding BorderColour}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+        <BoxView Grid.Row="5" Grid.ColumnSpan="3" BackgroundColor="{Binding BorderColour}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+        <BoxView Grid.Row="7" Grid.ColumnSpan="3" BackgroundColor="{Binding BorderColour}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+        <BoxView Grid.Row="9" Grid.ColumnSpan="3" BackgroundColor="{Binding BorderColour}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+        <BoxView Grid.Row="11" Grid.ColumnSpan="3" BackgroundColor="{Binding BorderColour}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
 
-        <BoxView Grid.Column="0" Grid.Row="1" Grid.RowSpan="11" BackgroundColor="Black" WidthRequest="1" VerticalOptions="FillAndExpand"/>
-        <BoxView Grid.Column="2" Grid.Row="1" Grid.RowSpan="11" BackgroundColor="Black" WidthRequest="1" VerticalOptions="FillAndExpand"/>
+        <BoxView Grid.Column="0" Grid.Row="1" Grid.RowSpan="11" BackgroundColor="{Binding BorderColour}" WidthRequest="1" VerticalOptions="FillAndExpand"/>
+        <BoxView Grid.Column="2" Grid.Row="1" Grid.RowSpan="11" BackgroundColor="{Binding BorderColour}" WidthRequest="1" VerticalOptions="FillAndExpand"/>
         <!-- Grid boarders -->
 
 
         <!-- Totals -->
         <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Spacing="0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0">
-                <Label x:Name="totalPoundText" Text="£2" FontSize="Medium" Padding="0,0,8,0"/>
-                <Label x:Name="totalCrownText" Text="2c" FontSize="Medium" Padding="0,0,8,0"/>
-                <Label x:Name="totalShillingText" Text="2s" FontSize="Medium" Padding="0,0,8,0"/>
-                <Label x:Name="totalPenceText" Text="2d" FontSize="Medium" Padding="0,0,8,0"/>
-                <Label x:Name="totalFarthingText" Text="2f" FontSize="Medium" Padding="0,0,0,0"/>
+                <Label x:Name="totalPoundText" Text="£2" FontSize="Medium" Padding="0,0,8,0" TextColor="{Binding TextColour}"/>
+                <Label x:Name="totalCrownText" Text="2c" FontSize="Medium" Padding="0,0,8,0" TextColor="{Binding TextColour}"/>
+                <Label x:Name="totalShillingText" Text="2s" FontSize="Medium" Padding="0,0,8,0" TextColor="{Binding TextColour}"/>
+                <Label x:Name="totalPenceText" Text="2d" FontSize="Medium" Padding="0,0,8,0" TextColor="{Binding TextColour}"/>
+                <Label x:Name="totalFarthingText" Text="2f" FontSize="Medium" Padding="0,0,0,0" TextColor="{Binding TextColour}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="0">
-                <Label Text="Total Worth" FontSize="Micro"/>
+                <Label Text="Total Worth" FontSize="Micro" TextColor="{Binding TextColour}"/>
             </StackLayout>
         </StackLayout>
 
@@ -64,18 +65,18 @@
         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Spacing="0">
             <!-- Minus and Down -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
-                <Button x:Name="lessPound" ClassId="lessPoundID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+                <Button x:Name="lessPound" ClassId="lessPoundID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" TextColor="{Binding TextColour}"/>
                 <ImageButton x:Name="convertDownPound" ClassId="convertDownPoundID" Pressed="Currency_Convert_Pressed" Source="Assets\Graphics\downArrowEnabled.png" WidthRequest="20" HeightRequest="15" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center"/>
             </StackLayout>
             <!-- Amount -->
-            <StackLayout Orientation="Vertical" WidthRequest="140" HeightRequest="54" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Spacing="0">                
-                <Label x:Name="poundText"  Text="2" FontSize="Medium" HorizontalOptions="Center"/>                
-                <Label x:Name="poundLabel" Text="pounds" FontSize="Micro" HorizontalOptions="Center"/>             
+            <StackLayout Orientation="Vertical" WidthRequest="140" HeightRequest="54" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+                <Label x:Name="poundText"  Text="2" FontSize="Medium" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>
+                <Label x:Name="poundLabel" Text="pounds" FontSize="Micro" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>             
             </StackLayout>
             <!-- Plus and Up -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand">
-                
-                <Button x:Name="morePound" ClassId="morePoundID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand"/>                
+
+                <Button x:Name="morePound" ClassId="morePoundID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" TextColor="{Binding TextColour}"/>                
             </StackLayout>
         </StackLayout>
 
@@ -84,18 +85,18 @@
         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1" Spacing="0">
             <!-- Minus and Down -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
-                <Button x:Name="lessCrown" ClassId="lessCrownID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+                <Button x:Name="lessCrown" ClassId="lessCrownID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" TextColor="{Binding TextColour}"/>
                 <ImageButton x:Name="convertDownCrown" ClassId="convertDownCrownID" Pressed="Currency_Convert_Pressed" Source="Assets\Graphics\downArrowEnabled.png" WidthRequest="20" HeightRequest="15" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center"/>
             </StackLayout>
             <!-- Amount -->
             <StackLayout Orientation="Vertical" WidthRequest="140" HeightRequest="54" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
-                <Label x:Name="crownText" Text="2" FontSize="Medium" HorizontalOptions="Center"/>
-                <Label x:Name="crownLabel" Text="crowns" FontSize="Micro" HorizontalOptions="Center"/>
+                <Label x:Name="crownText" Text="2" FontSize="Medium" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>
+                <Label x:Name="crownLabel" Text="crowns" FontSize="Micro" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>
             </StackLayout>
             <!-- Plus and Up -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand">
                 <ImageButton x:Name="convertUpCrown" ClassId="convertUpCrownID" Pressed="Currency_Convert_Pressed" Source="Assets\Graphics\upArrowEnabled.png" WidthRequest="20" HeightRequest="15" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center" Margin="15,0,0,0"/>
-                <Button x:Name="moreCrown" ClassId="moreCrownID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand"/>
+                <Button x:Name="moreCrown" ClassId="moreCrownID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" TextColor="{Binding TextColour}"/>
             </StackLayout>
         </StackLayout>
 
@@ -103,18 +104,18 @@
         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="6" Grid.Column="1" Spacing="0">
             <!-- Minus and Down -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
-                <Button x:Name="lessShilling" ClassId="lessShillingID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+                <Button x:Name="lessShilling" ClassId="lessShillingID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" TextColor="{Binding TextColour}"/>
                 <ImageButton x:Name="convertDownShilling" ClassId="convertDownShillingID" Pressed="Currency_Convert_Pressed" Source="Assets\Graphics\downArrowEnabled.png" WidthRequest="20" HeightRequest="15" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center"/>
             </StackLayout>
             <!-- Amount -->
             <StackLayout Orientation="Vertical" WidthRequest="140" HeightRequest="54" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
-                <Label x:Name="shillingText" Text="2" FontSize="Medium" HorizontalOptions="Center"/>
-                <Label x:Name="shillingLabel" Text="shilling" FontSize="Micro" HorizontalOptions="Center"/>
+                <Label x:Name="shillingText" Text="2" FontSize="Medium" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>
+                <Label x:Name="shillingLabel" Text="shilling" FontSize="Micro" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>
             </StackLayout>
             <!-- Plus and Up -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand">
                 <ImageButton x:Name="convertUpShilling" ClassId="convertUpShillingID" Pressed="Currency_Convert_Pressed" Source="Assets\Graphics\upArrowEnabled.png" WidthRequest="20" HeightRequest="15" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center" Margin="15,0,0,0"/>
-                <Button x:Name="moreShilling" ClassId="moreShillingID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand"/>
+                <Button x:Name="moreShilling" ClassId="moreShillingID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" TextColor="{Binding TextColour}"/>
             </StackLayout>
         </StackLayout>
 
@@ -122,18 +123,18 @@
         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="8" Grid.Column="1" Spacing="0">
             <!-- Minus and Down -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
-                <Button x:Name="lessPence" ClassId="lessPenceID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+                <Button x:Name="lessPence" ClassId="lessPenceID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" TextColor="{Binding TextColour}"/>
                 <ImageButton x:Name="convertDownPence" ClassId="convertDownPenceID" Pressed="Currency_Convert_Pressed" Source="Assets\Graphics\downArrowEnabled.png" WidthRequest="20" HeightRequest="15" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center"/>
             </StackLayout>
             <!-- Amount -->
             <StackLayout Orientation="Vertical" WidthRequest="140" HeightRequest="54" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
-                <Label x:Name="penceText" Text="2" FontSize="Medium" HorizontalOptions="Center"/>
-                <Label x:Name="penceLabel" Text="pence" FontSize="Micro" HorizontalOptions="Center"/>
+                <Label x:Name="penceText" Text="2" FontSize="Medium" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>
+                <Label x:Name="penceLabel" Text="pence" FontSize="Micro" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>
             </StackLayout>
             <!-- Plus and Up -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand">
                 <ImageButton x:Name="convertUpPence" ClassId="convertUpPenceID" Pressed="Currency_Convert_Pressed" Source="Assets\Graphics\upArrowEnabled.png" WidthRequest="20" HeightRequest="15" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center" Margin="15,0,0,0"/>
-                <Button x:Name="morePence" ClassId="morePenceID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand"/>
+                <Button x:Name="morePence" ClassId="morePenceID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" TextColor="{Binding TextColour}"/>
             </StackLayout>
         </StackLayout>
 
@@ -141,21 +142,28 @@
         <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="10" Grid.Column="1" Spacing="0">
             <!-- Minus and Down -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
-                <Button x:Name="lessFarthing" ClassId="lessFarthingID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start"/>
+                <Button x:Name="lessFarthing" ClassId="lessFarthingID" Pressed="Currency_Adjust_Pressed" Text="-" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="Start" TextColor="{Binding TextColour}"/>
                 
             </StackLayout>
             <!-- Amount -->
             <StackLayout Orientation="Vertical" WidthRequest="140" HeightRequest="54" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
-                <Label x:Name="farthingText" Text="2" FontSize="Medium" HorizontalOptions="Center"/>
-                <Label x:Name="farthingLabel" Text="farthing" FontSize="Micro" HorizontalOptions="Center"/>
+                <Label x:Name="farthingText" Text="2" FontSize="Medium" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>
+                <Label x:Name="farthingLabel" Text="farthing" FontSize="Micro" HorizontalOptions="Center" TextColor="{Binding TextColour}"/>
             </StackLayout>
             <!-- Plus and Up -->
             <StackLayout Orientation="Horizontal" WidthRequest="80" HeightRequest="54" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand">
                 <ImageButton x:Name="convertUpFarthing" ClassId="convertUpFarthingID" Pressed="Currency_Convert_Pressed" Source="Assets\Graphics\upArrowEnabled.png" WidthRequest="20" HeightRequest="15" Aspect="Fill" VerticalOptions="Center" HorizontalOptions="Center" Margin="15,0,0,0"/>
-                <Button x:Name="moreFarthing" ClassId="moreFarthingID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand"/>
+                <Button x:Name="moreFarthing" ClassId="moreFarthingID" Pressed="Currency_Adjust_Pressed" Text="+" WidthRequest="40" FontAttributes="Bold" BackgroundColor="Transparent" HorizontalOptions="EndAndExpand" TextColor="{Binding TextColour}"/>
             </StackLayout>
         </StackLayout>
+
+        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="12" Grid.Column="1" Spacing="0">
+            <Button Text="Settings" Clicked="Button_Clicked" TextColor="{Binding TextColour}"
+                    VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
     </Grid>
+
+    
 
    
 
