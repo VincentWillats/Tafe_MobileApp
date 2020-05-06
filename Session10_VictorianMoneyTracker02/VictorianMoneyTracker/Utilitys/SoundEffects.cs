@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Plugin.SimpleAudioPlayer;
+using Xamarin.Forms;
 
 namespace VictorianMoneyTracker
 {
@@ -11,12 +12,15 @@ namespace VictorianMoneyTracker
 
         public static void PlayClickSound()
         {
-            if (click == null)
+            if ((bool)Application.Current.Properties["soundOn"])
             {
-                click = CrossSimpleAudioPlayer.Current;
-                click.Load("click.wav");
-            }
-            click.Play();
+                if (click == null)
+                {
+                    click = CrossSimpleAudioPlayer.Current;
+                    click.Load("click.wav");
+                }
+                click.Play();
+            }            
         }
     }
 }

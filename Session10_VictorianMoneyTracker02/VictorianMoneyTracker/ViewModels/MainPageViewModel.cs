@@ -11,9 +11,8 @@ namespace VictorianMoneyTracker.ViewModels
     {
         private INavigation _navigation;
         public event PropertyChangedEventHandler PropertyChanged;
-        bool isSoundOn = true;
 
-        private Color _BackGroundColor;
+        private Color _BackgroundColour;
         private Color _TextColour;
         private Color _BorderColour;
 
@@ -37,10 +36,10 @@ namespace VictorianMoneyTracker.ViewModels
         
         public Color BackgroundColour //{ get; set; }
         {
-            get { return _BackGroundColor;  }
+            get { return _BackgroundColour;  }
             set 
-            {   
-                _BackGroundColor = value;
+            {
+                _BackgroundColour = value;
                 OnPropertyChanged();      
             }
         }        
@@ -74,10 +73,6 @@ namespace VictorianMoneyTracker.ViewModels
             {
                 SetDarkMode((bool)Application.Current.Properties["darkMode"]);
             }
-            if (Application.Current.Properties.ContainsKey("soundOn"))
-            {
-                isSoundOn = (bool)Application.Current.Properties["soundOn"];
-            }
 
             if (Application.Current.Properties.ContainsKey("pounds"))
             {
@@ -108,7 +103,7 @@ namespace VictorianMoneyTracker.ViewModels
         
         private void ConvertCurrency(string whatButton)
         {
-            if (isSoundOn) SoundEffects.PlayClickSound();        
+            SoundEffects.PlayClickSound();        
 
             switch (whatButton)
             {
@@ -150,7 +145,7 @@ namespace VictorianMoneyTracker.ViewModels
 
         public void AdjustCurrency(string whatButton)
         {
-            if (isSoundOn) SoundEffects.PlayClickSound();                                
+            SoundEffects.PlayClickSound();                                
             switch (whatButton)
             {
                 // Pound
@@ -204,7 +199,7 @@ namespace VictorianMoneyTracker.ViewModels
         
         private void OpenSettings()
         {
-            if (isSoundOn) SoundEffects.PlayClickSound();
+            SoundEffects.PlayClickSound();
             _navigation.PushModalAsync(new SettingsPage());
         }
     }

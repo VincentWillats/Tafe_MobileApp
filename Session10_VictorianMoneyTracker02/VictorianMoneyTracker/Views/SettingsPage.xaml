@@ -51,21 +51,19 @@
             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Spacing="0">
                 <Label Text="Sound" TextColor="{Binding TextColour}" WidthRequest="150"
                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-                <Button Text="{Binding isSoundOnText}" TextColor="{Binding TextColour}" WidthRequest="150"
-                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        Clicked="Button_Clicked" ClassId="Sound"/>
+                <Switch IsToggled="{Binding IsSoundOn}"
+                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1" Spacing="0">
                 <Label Text="Darkmode" TextColor="{Binding TextColour}" WidthRequest="150"
                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-                <Button Text="{Binding isDarkModeOnText}" TextColor="{Binding TextColour}" WidthRequest="150"
-                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
-                        Clicked="Button_Clicked" ClassId="Darkmode"/>
+                <Switch IsToggled="{Binding IsDarkMode}"
+                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
             
             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="12" Grid.Column="1" Spacing="0">
-                <Button Text="Close Settings" Clicked="Button_Clicked" ClassId="Close"
+                <Button Text="Close Settings" Command="{Binding CloseSettingsCommand}" ClassId="Close"
                     VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
         </Grid>
