@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
 
@@ -16,8 +18,16 @@ using Xamarin.Forms;
 
 namespace VictorianMoneyTracker
 {
-    class currency_Model
+    public class currency_Model : INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OnPropertyChanged([CallerMemberName] string name = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         private int _pounds;
         public int Pounds
         {
@@ -28,6 +38,7 @@ namespace VictorianMoneyTracker
                 if (!(_pounds >= 0)) 
                 { _pounds = 0; }
                 Application.Current.Properties["pounds"] = _pounds;
+                OnPropertyChanged();
             }
         }
 
@@ -41,6 +52,7 @@ namespace VictorianMoneyTracker
                 if (!(_crowns >= 0))
                 { _crowns = 0; }
                 Application.Current.Properties["crowns"] = _crowns;
+                OnPropertyChanged();
             }
         }
 
@@ -54,6 +66,7 @@ namespace VictorianMoneyTracker
                 if (!(_shillings >= 0))
                 { _shillings = 0; }
                 Application.Current.Properties["shillings"] = _shillings;
+                OnPropertyChanged();
             }
         }
 
@@ -67,11 +80,13 @@ namespace VictorianMoneyTracker
                 if (!(_pence >= 0))
                 { _pence = 0; }
                 Application.Current.Properties["pence"] = _pence;
-
+                OnPropertyChanged();
             }
         }
 
-        private int _farthings;
+  
+        private int _farthings;        
+
         public int Farthings
         {
             get { return _farthings; }
@@ -81,6 +96,7 @@ namespace VictorianMoneyTracker
                 if (!(_farthings >= 0))
                 { _farthings = 0; }
                 Application.Current.Properties["farthings"] = _farthings;
+                OnPropertyChanged();
             }
         }
 
@@ -88,8 +104,8 @@ namespace VictorianMoneyTracker
         {
             if (_pounds >= 1)
             {
-                _pounds--;
-                _crowns = _crowns + 4;
+                Pounds--;
+                Crowns = Crowns + 4;
             }        
             else
             {
@@ -102,8 +118,8 @@ namespace VictorianMoneyTracker
         
             if (_crowns >= 4)
             {
-                _crowns = _crowns - 4;
-                _pounds++;                
+                Crowns = Crowns - 4;
+                Pounds++;                
             }
             else
             {
@@ -115,8 +131,8 @@ namespace VictorianMoneyTracker
         {
             if (_crowns >= 1)
             {
-                _crowns--;
-                _shillings = _shillings + 5;                
+                Crowns--;
+                Shillings = Shillings + 5;                
             }
             else
             {
@@ -128,8 +144,8 @@ namespace VictorianMoneyTracker
         {
             if (_shillings >= 5)
             {
-                _shillings = _shillings - 5;
-                _crowns++;
+                Shillings = Shillings - 5;
+                Crowns++;
             }
             else
             {
@@ -141,8 +157,8 @@ namespace VictorianMoneyTracker
         {
             if (_shillings >= 1)
             {
-                _shillings--;
-                _pence = _pence + 12;
+                Shillings--;
+                Pence = Pence + 12;
             }
             else
             {
@@ -154,8 +170,8 @@ namespace VictorianMoneyTracker
         {
             if (_pence >= 12)
             {
-                _pence = _pence - 12;
-                _shillings++;
+                Pence = Pence - 12;
+                Shillings++;
             }
             else
             {
@@ -167,8 +183,8 @@ namespace VictorianMoneyTracker
         {
             if (_pence >= 1)
             {
-                _pence--;
-                _farthings = _farthings + 4;
+                Pence--;
+                Farthings = Farthings + 4;
             }
             else
             {
@@ -180,8 +196,8 @@ namespace VictorianMoneyTracker
         {
             if (_farthings >= 4)
             {
-                _farthings = _farthings - 4;
-                _pence++;
+                Farthings = Farthings - 4;
+                Pence++;
             }
             else
             {
