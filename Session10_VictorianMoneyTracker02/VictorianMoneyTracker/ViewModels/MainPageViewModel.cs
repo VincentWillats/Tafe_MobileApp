@@ -15,6 +15,7 @@ namespace VictorianMoneyTracker.ViewModels
         private Color _BackgroundColour;
         private Color _TextColour;
         private Color _BorderColour;
+        public currency_Model Currency { get; set; }
 
         public Command PageAppearingCommand { get; }
         public Command ConvertCurrencyCommand { get; }
@@ -32,7 +33,6 @@ namespace VictorianMoneyTracker.ViewModels
             LoadProperties();
         }       
 
-        public currency_Model Currency { get; set; }
         
         public Color BackgroundColour //{ get; set; }
         {

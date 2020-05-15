@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CurrencyConverterVW.MainPage">
+
+    <StackLayout Orientation="Vertical" Margin="0,50,0,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="18*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+            </Grid.ColumnDefinitions>
+
+            <Entry Text="{Binding InputAmount, Mode=OneWay}" x:Name="Entry_startAmount" 
+                   Grid.Row="1" Grid.Column="0" IsReadOnly="True" FontSize="14"
+                   Margin="2"
+                   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+            <Picker Title="Select a Currency"
+                    Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" FontSize="14"
+                    HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" 
+                    ItemsSource="{Binding CurrencyList}" ItemDisplayBinding="{Binding currencyName}"
+                    SelectedIndex="{Binding SelectedCurrencyIndexID}"/>
+            <Entry Text="{Binding OutputAmount, Mode=OneWay}" x:Name="Entry_convertedAmount" 
+                   Grid.Row="1" Grid.Column="2" IsReadOnly="True" FontSize="14"
+                   Margin="2"
+                   HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="End"/>
+
+
+            <Button x:Name="btn_7" ClassId="btn_7"      Text="7" Grid.Row="2" Grid.Column="0" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_7}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_8" ClassId="btn_8"      Text="8" Grid.Row="2" Grid.Column="1" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_8}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_9" ClassId="btn_9"      Text="9" Grid.Row="2" Grid.Column="2" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_9}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_4" ClassId="btn_4"      Text="4" Grid.Row="3" Grid.Column="0" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_4}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_5" ClassId="btn_5"      Text="5" Grid.Row="3" Grid.Column="1" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_5}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_6" ClassId="btn_6"      Text="6" Grid.Row="3" Grid.Column="2" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_6}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_1" ClassId="btn_1"      Text="1" Grid.Row="4" Grid.Column="0" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_1}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_2" ClassId="btn_2"      Text="2" Grid.Row="4" Grid.Column="1" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_2}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_3" ClassId="btn_3"      Text="3" Grid.Row="4" Grid.Column="2" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_3}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_0" ClassId="btn_0"      Text="0" Grid.Row="5" Grid.Column="0" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_0}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_dot" ClassId="btn_dot"  Text="." Grid.Row="5" Grid.Column="1" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_dot}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="btn_c" ClassId="btn_c"      Text="C" Grid.Row="5" Grid.Column="2" 
+                    Command="{Binding ButtonClickedCommand}" CommandParameter="{x:Reference btn_c}" 
+                    VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

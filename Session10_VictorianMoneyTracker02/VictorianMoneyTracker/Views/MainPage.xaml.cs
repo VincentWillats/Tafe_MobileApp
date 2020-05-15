@@ -24,7 +24,12 @@ namespace VictorianMoneyTracker
         {
             InitializeComponent();
             BindingContext = new MainPageViewModel(this.Navigation);
-        }    
+        }
+
+        private void Switch_Toggled()
+        {
+
+        }
     }
 }
 

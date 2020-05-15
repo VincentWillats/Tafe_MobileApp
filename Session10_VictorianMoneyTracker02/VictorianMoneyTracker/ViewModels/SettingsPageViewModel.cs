@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using Xamarin.Forms;
 
 namespace VictorianMoneyTracker.ViewModels
@@ -20,20 +17,16 @@ namespace VictorianMoneyTracker.ViewModels
         private Color _BorderColour;   
 
         public Command CloseSettingsCommand { get; }
-
-
         public SettingsPageViewModel(INavigation navigation)
         {
             _navigation = navigation;
             CloseSettingsCommand = new Command(CloseSettings);
             LoadProperties();            
         }
-
         private void OnPropertyChanged([CallerMemberName] string name = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-               
+        }               
         public bool IsSoundOn
         {
             get { return _isSoundOn; }
@@ -82,8 +75,6 @@ namespace VictorianMoneyTracker.ViewModels
                 OnPropertyChanged();
             }
         }
-
-
         private void LoadProperties()
         {
             if (Application.Current.Properties.ContainsKey("darkMode"))
@@ -95,14 +86,12 @@ namespace VictorianMoneyTracker.ViewModels
                 IsSoundOn = (bool)Application.Current.Properties["soundOn"];
             }
         }
-
         private void SetDarkMode(bool darkMode)
         {
             BackgroundColour = darkMode ? Color.FromHex("#585858") : Color.White;
             TextColour = darkMode ? Color.White : Color.Black;
             BorderColour = darkMode ? Color.Gray : Color.Black;          
         }
-
         private void CloseSettings()
         {
             SoundEffects.PlayClickSound();
