@@ -6,9 +6,6 @@
              mc:Ignorable="d"
              x:Class="VictorianMoneyTracker.SettingsPage">
     <ContentPage.Content>
-
-
-
         <Grid BackgroundColor="{Binding BackgroundColour}" RowSpacing="0" ColumnSpacing="0" Margin="2,40,2,2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="54"/>
@@ -30,8 +27,7 @@
                 <ColumnDefinition Width="1"/>
                 <ColumnDefinition Width="300"/>
                 <ColumnDefinition Width="1"/>
-            </Grid.ColumnDefinitions>
-
+            </Grid.ColumnDefinitions>    
 
             <!-- Grid boarders -->
             <BoxView Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="{Binding BorderColour}" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
@@ -45,27 +41,30 @@
             <BoxView Grid.Column="2" Grid.Row="1" Grid.RowSpan="11" BackgroundColor="{Binding BorderColour}" WidthRequest="1" VerticalOptions="FillAndExpand"/>
             <!-- Grid boarders -->
 
-
-
-
+            <!-- Sound Options -->
             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1" Spacing="0">
                 <Label Text="Sound" TextColor="{Binding TextColour}" WidthRequest="150"
                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
                 <Switch IsToggled="{Binding IsSoundOn}"
                         HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
+            <!-- Sound Options -->
 
+            <!-- Darkmode Options -->
             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1" Spacing="0">
                 <Label Text="Darkmode" TextColor="{Binding TextColour}" WidthRequest="150"
                        HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
                 <Switch IsToggled="{Binding IsDarkMode}"
                         HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
-            
+            <!-- Darkmode Options -->
+
+            <!-- Close Button -->
             <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" Grid.Row="12" Grid.Column="1" Spacing="0">
                 <Button Text="Close Settings" Command="{Binding CloseSettingsCommand}" ClassId="Close"
                     VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
+            <!-- Close Button -->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
