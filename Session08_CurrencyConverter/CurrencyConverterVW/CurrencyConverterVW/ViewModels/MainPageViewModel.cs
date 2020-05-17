@@ -6,7 +6,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Net.Http;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -90,14 +89,14 @@ namespace CurrencyConverterVW.ViewModels
 
             string currencyID = _currencyID;
             decimal amount = decimal.Parse(InputAmount);
-            decimal exchangeRate = await GetExchangeRate(currencyID);
+            decimal exchangeRate = await GetExchangeRateAsync(currencyID);
+            if(exchangeRate == -1) { return; }
             decimal convertedAmount = amount * exchangeRate;
 
             OutputAmount = convertedAmount.ToString("#.##");
-
         }
 
-        private async Task<decimal> GetExchangeRate(string currID)
+        private async Task<decimal> GetExchangeRateAsync(string currID)
         {
             decimal exRate;
 
@@ -106,42 +105,58 @@ namespace CurrencyConverterVW.ViewModels
             sb.Append(currID);
             sb.Append("&compact=ultra&apiKey=0ab72b2279d01f6e5a76");
 
-            HttpResponseMessage response = await client.GetAsync(sb.ToString());
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            IList<JToken> obj = JObject.Parse(responseBody);
-            string xr = ((JProperty)obj[0]).Value.ToString();
-            decimal.TryParse(xr, out exRate);
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(sb.ToString());
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                IList<JToken> obj = JObject.Parse(responseBody);
+                string xr = ((JProperty)obj[0]).Value.ToString();
+                decimal.TryParse(xr, out exRate);
+            }
+            catch (Exception ea)
+            {
+                System.Diagnostics.Debug.Write(ea.Message);
+                exRate = -1;
+            }            
             return exRate;
         }
 
         private async void LoadCurrenciesFromAPI()
         {
             List<Currency> cList = new List<Currency>();
-            cList = await LoadResultsAsync();
+            cList = await LoadCurrencyListResultsAsync();
             foreach(Currency c in cList)
             {
                 CurrencyList.Add(c);
             }            
         }
 
-        public async Task<List<Currency>> LoadResultsAsync()
+        public async Task<List<Currency>> LoadCurrencyListResultsAsync()
         {
-            string urlAPI = "https://free.currencyconverterapi.com/api/v6/currencies?apiKey=0ab72b2279d01f6e5a76";
-            
+            string urlAPI = "https://free.currconv.com/api/v7/currencies?apiKey=0ab72b2279d01f6e5a76";                        
             List<Currency> cList = new List<Currency>();
-            HttpResponseMessage response = await client.GetAsync(urlAPI);
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            JObject jo = JObject.Parse(responseBody);
-            var children = jo.SelectToken("results").Children();
-            foreach(var child in children)
+
+            try
             {
-                var childrenOfChild = child.Children();
-                foreach(var c in childrenOfChild)
+                HttpResponseMessage response = await client.GetAsync(urlAPI);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                JObject jo = JObject.Parse(responseBody);
+                var children = jo.SelectToken("results").Children();
+                foreach (var child in children)
                 {
-                    cList.Add(JsonConvert.DeserializeObject<Currency>(JsonConvert.SerializeObject(c)));
+                    var childrenOfChild = child.Children();
+                    foreach (var c in childrenOfChild)
+                    {
+                        cList.Add(JsonConvert.DeserializeObject<Currency>(JsonConvert.SerializeObject(c)));
+                    }
                 }
+            }
+            catch (Exception ea)
+            {
+                System.Diagnostics.Debug.Write(ea.Message);
+                cList.Add(new Currency { currencyName = "Error Loading Currencies." });
             }            
             return cList;
         }    
